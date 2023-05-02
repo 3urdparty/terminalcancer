@@ -124,8 +124,8 @@ endif()
   
 
 foreach(LIBRARY ${MAIN_LIBRARIES})
-if (NOT EXISTS ${PROJECT_SOURCE_DIR}/libs/${LIBRARY}/CMakeLists.txt)
-	message(FATAL_ERROR The ${LIBRARY} submodule was not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.)
+if (NOT EXISTS "${PROJECT_SOURCE_DIR}/libs/${LIBRARY}/CMakeLists.txt")
+	message("FATAL_ERROR The ${LIBRARY} submodule was not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
 endif()
 endforeach(LIBRARY)
 
