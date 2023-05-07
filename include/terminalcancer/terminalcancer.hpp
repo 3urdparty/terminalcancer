@@ -9,6 +9,9 @@
 #include <utility>
 #include <vector>
 using namespace std;
+
+/// @brief returns the dimensions of the current terminal
+/// @return returns a tuple containing the terminal width and height
 tuple<int, int> getTerminalDimensions();
 
 #endif
