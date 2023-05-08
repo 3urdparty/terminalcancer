@@ -57,3 +57,8 @@ char getche(void) {
   if (tcsetattr(0, TCSADRAIN, &old) < 0) perror("tcsetattr ~ICANON");
   return buf;
 }
+
+void flushTerminal(){
+  char clear_terminal[] = R"(printf "\33c\e[3J")";
+  system(clear_terminal);
+}
