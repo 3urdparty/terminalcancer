@@ -19,8 +19,11 @@ tuple<int, int> getTerminalDimensions() {
   return {w.ws_col, w.ws_row};
 };
 
+// Code copied from https://stackoverflow.com/a/16361724/20904220
 char getch(void) {
+  // declares a variable to store the character inputted
   char buf = 0;
+  // creates a termios object
   struct termios old = {0};
   fflush(stdout);
   if (tcgetattr(0, &old) < 0) perror("tcsetattr()");
@@ -37,6 +40,7 @@ char getch(void) {
   return buf;
 }
 
+// Same code as getch but does not output the character
 char getche(void) {
   char buf = 0;
   struct termios old = {0};
@@ -51,6 +55,5 @@ char getche(void) {
   old.c_lflag |= ICANON;
   old.c_lflag |= ECHO;
   if (tcsetattr(0, TCSADRAIN, &old) < 0) perror("tcsetattr ~ICANON");
-  // printf("%c\n", buf); // uncomment this if you want to see the char
   return buf;
 }
